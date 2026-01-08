@@ -112,14 +112,32 @@
 
   function showFinalScreen(){
     const finalDiv=document.createElement('div');
-    finalDiv.style.position='fixed';finalDiv.style.top='0';finalDiv.style.left='0';finalDiv.style.width='100vw';finalDiv.style.height='100vh';
-    finalDiv.style.background='rgba(0,0,0,0.85)';finalDiv.style.display='flex';finalDiv.style.justifyContent='center';finalDiv.style.alignItems='center';
-    finalDiv.style.flexDirection='column';finalDiv.style.color='#fff';finalDiv.style.fontSize='clamp(30px,6vw,60px)';
-    finalDiv.innerHTML='Виктория, будешь моей навсегда? ❤️<br><button style="margin-top:30px;padding:15px 40px;font-size:24px;border-radius:50px;background:linear-gradient(45deg,#ff0844,#ffb199);border:none;color:white;cursor:pointer;" onclick="alert(\'Я люблю тебя! 💞\')">Да! 💖</button>';
+    finalDiv.id='finalScreen';
+    finalDiv.style.position='fixed';
+    finalDiv.style.top='0';
+    finalDiv.style.left='0';
+    finalDiv.style.width='100vw';
+    finalDiv.style.height='100vh';
+    finalDiv.style.background='rgba(0,0,0,0.85)';
+    finalDiv.style.display='flex';
+    finalDiv.style.justifyContent='center';
+    finalDiv.style.alignItems='center';
+    finalDiv.style.flexDirection='column';
+    finalDiv.style.color='#fff';
+    finalDiv.style.fontSize='clamp(30px,6vw,60px)';
+    finalDiv.innerHTML='Виктория, будешь моей навсегда? ❤️<br><button style="margin-top:30px;padding:15px 40px;font-size:24px;border-radius:50px;background:linear-gradient(45deg,#ff0844,#ffb199);border:none;color:white;cursor:pointer;" onclick="acceptLove()">Да! 💖</button>';
     document.body.appendChild(finalDiv);
   }
 
-  // Mini-game logic
+  function acceptLove(){
+    const fs=document.getElementById('finalScreen');
+    if(fs){
+      fs.style.transition='opacity 1.5s';
+      fs.style.opacity='0';
+      setTimeout(()=>fs.remove(),1500);
+    }
+    alert('Я самый счастливый человек на свете ❤️');
+  }e logic
   const gameArea=document.getElementById('gameArea');
   let score=0;
   function spawnGameItem(){
